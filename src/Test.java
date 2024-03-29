@@ -11,12 +11,20 @@ import model.Student;
 public class Test {  
 public static void main(String[] args) { 
 	
-	Resource resourse= new ClassPathResource("applicationContext.xml");
-	BeanFactory factory = new XmlBeanFactory(resourse);
+	//Resource resourse= new ClassPathResource("applicationContext.xml");
+	//BeanFactory factory = new XmlBeanFactory(resourse);
 	
-	Student student= (Student) factory.getBean("student");
+	ApplicationContext c = new ClassPathXmlApplicationContext("applicationContext.xml");
+	Student student= (Student) c.getBean("student");
+	//Student student2= (Student) c.getBean("student");
+
 
 	student.setName("nikita");
+	System.out.println(student.getName());
+	System.out.println(student);
+	//System.out.println(student2);
+	
+	//student2.displayInfo();
 	student.displayInfo();
 	  
 }  
